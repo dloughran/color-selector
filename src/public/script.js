@@ -29,8 +29,28 @@ document.getElementById('uploadForm').addEventListener('submit', async (event) =
   }
 });
 
+// Submit the upload form as soon as a valid image file is selected
+// Eliminates the need for the user to click a separate 'Upload' button after choosing the file
 document.getElementById('imageInput').addEventListener('change', (event) => {
-  document.getElementById('upload-button').disabled=false;
+  const validFileTypes = [
+    "image/bmp",
+    "image/gif",
+    "image/jpg",
+    "image/jpeg",
+    "image/png",
+    "image/svg+xml",
+    "image/webp"
+  ];
+  const files = event.target.files;
+  const selectedFileType = files[0].type;
+  const theUploadForm = document.getElementById('uploadForm');
+  if (validFileTypes.includes(selectedFileType)) {
+    theUploadForm.requestSubmit();
+  }
+  else {
+    alert(`Files of type ${selectedFileType} are not accepted.`);
+    theUploadForm.reset();
+  }
 });
 
 document.getElementById('uploadedImage').addEventListener('load', (event) => {
