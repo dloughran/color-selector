@@ -1,0 +1,6 @@
+src/node_modules
+docker
+.dockerignore
+.git
+.gitignore
+*.md

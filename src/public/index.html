@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Picker</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: *;"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="top-wrapper">
+      <div>
+        <h1>Upload an Image</h1>
+        <form id="uploadForm" enctype="multipart/form-data">
+          <input
+            type="file"
+            id="imageInput"
+            name="image"
+            accept="image/*"
+            required
+          />
+          <button id="upload-button" type="submit" disabled>Upload</button>
+        </form>
+      </div>
+      <div id="colorInfo">
+        <div id="color-box" style="color:#CCC;">  
+          <div id="color-swatch" style="background-color:#FFF,"></div>
+          <div>
+            <p>RGB:</p>
+            <p>HEX:</p>
+            <p>HSL:</p>
+            <p>CLP:</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="image-controls">
+      <h1>Point at the image to get color codes<br />Click to copy codes to clipboard</h1>
+      <div id="zoom-buttons-wrapper">
+        <div id="zoom-in">+</div>
+        <div id="zoom-out">-</div>
+        <div id="zoom-reset">RESET</div>
+      </div>
+      <img id="uploadedImage" alt="Uploaded Image" />
+      <div id="mt"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

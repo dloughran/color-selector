@@ -1,0 +1,39 @@
+
+services:
+  app:
+    container_name: app
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: color-selector
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../src:/usr/src/app # Bind mount the source directory
+      - /usr/src/app/node_modules # Anonymous volume for node_modules
+    environment:
+      - NODE_ENV=development
+
+# SOME EXPLANATIONS
+# The project folder structure is this...
+# color-selector
+# |--docker
+#    |--.dockerignore
+#    |--docker-compose.yml
+#    |--Dockerfile
+# |--src
+#    |--node-modules
+#    |--public
+#       |--index.html
+#       |--script.js
+#       |--styles.css
+#    |--uploads
+# |--index.js
+# |--package.json
+#
+# I run the docker compose up command from the 'docker' folder. The build CONTEXT needs to be up in the project folder root (color-selector/).
+# The proper build context is set in the 'build:' section of this file, in the 'context:' sub-section.
+# Setting 'context:..' tells docker that the build context is one level up from the current ('docker') folder. ('.' = current folder. '..' = one folder above current folder)
+#
+# The same logic applies to specifying the bind-mount '../src:/usr/src/app' in the 'volumes:' section.
+
